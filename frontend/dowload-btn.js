@@ -13,3 +13,11 @@ function downloadImage() {
         })
         .catch(error => console.error('Download error:', error));
 }
+
+document.querySelector('.carousel').addEventListener('mouseover', () => {
+    document.querySelector('.carousel').style.animationPlayState = 'paused';
+});
+
+document.querySelector('.carousel').addEventListener('mouseout', () => {
+    document.querySelector('.carousel').style.animationPlayState = 'running';
+});
