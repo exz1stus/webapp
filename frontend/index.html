@@ -7,7 +7,7 @@
     <title>Download File</title>
     <script>
       function downloadImage() {
-          fetch('http://localhost:3000/download') // Request the image from the backend
+          fetch('https://batko.alwaysdata.net:3000/download') // Request the image from the backend
               .then(response => response.blob()) // Convert response to a Blob (binary data)
               .then(blob => {
                   const url = window.URL.createObjectURL(blob); // Create a temporary URL
