@@ -3,13 +3,19 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 17000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors({
     origin: '*', // Allow all origins (or set a specific frontend origin)
     methods: ['GET'], // Allow only GET requests
     allowedHeaders: ['Content-Type']
 }));
+
+app.use(express.static(path.join(__dirname, 'frontend')));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+});
 
 app.get('/download', (req, res) => {
     const filePath = path.join(__dirname, 'assets', 'batko.jpg');
@@ -21,7 +27,6 @@ app.get('/download', (req, res) => {
     });
 });
 
-// Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running at http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
